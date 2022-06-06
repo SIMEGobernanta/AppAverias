@@ -1,0 +1,9 @@
+
+<mat-form-field appearance="fill" class="example-full-width mt-2 mr-2 p-1">
+  <mat-label> Buscar: </mat-label>
+  <input type="text" matInput #input (input)="search(input.value.toString())">
+  <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; resetArray()" color="warn">
+    <mat-icon> close </mat-icon>
+  </button>
+</mat-form-field>
+

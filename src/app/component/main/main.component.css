@@ -1,0 +1,28 @@
+.custom-card {
+  height: 120px !important;
+  margin-top: 3px;
+  border: 1px solid #AAA;
+}
+
+
+.icon-container {
+  background-color: #CCC;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.circlebadge {
+  width: 20px !important;
+  height: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2px !important;
+}
+
+.isroom {
+  color:rgb(234, 18, 18);
+}

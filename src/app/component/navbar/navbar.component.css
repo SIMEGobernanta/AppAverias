@@ -1,0 +1,25 @@
+.bg-custom-green {
+  background-color: rgb(82, 178, 82);
+}
+
+.custom-pos {
+  display: inline;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.mat-blue {
+  background-color: rgb(63, 81, 181);
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .custom-pos {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+}

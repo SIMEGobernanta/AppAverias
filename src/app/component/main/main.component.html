@@ -1,0 +1,19 @@
+<div class="row mx-2 my-1" *ngIf="Faults.spaces.length > 0 else noCards">
+  <div class="col-12 col-md-6 col-lg-3 col-xl-2 col-xxl-1 p-0" *ngFor="let fault of Faults.spaces">
+    <div class="row custom-card m-2">
+      <div class="col-3 icon-container">
+        <mat-icon class="m-auto"> build </mat-icon> <p class="badge badge-pill badge-primary circlebadge m-auto"> {{fault.faults.length}} </p> <br>
+      </div>
+
+      <div class="col-9 text-center overflow-hidden" [ngClass]="{'isroom': fault.idItemSubType === 'ROOM'}">
+        <p class="h4"> {{fault.name}} <mat-icon *ngIf="fault.idItemSubType ==='ROOM'"> hotel </mat-icon> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noCards>
+  <div clas="w-100" style="text-align:center;">
+    <p class="text-danger h3"> No hay elementos que coincidan con los filtros </p>
+  </div>
+</ng-template>
