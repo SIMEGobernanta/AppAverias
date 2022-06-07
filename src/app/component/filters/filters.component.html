@@ -1,4 +1,4 @@
-<div class="w-100 container-fluid mt-3 ml-3 d-flex">
+<div class="w-100 container-fluid mt-3 ml-md-3 d-flex justify-content-center justify-content-md-start">
   <div *ngFor="let filter of filters" (click)="setFilterHandler(filter)" role="button">
     <div class="d-flex align-items-center align-content-center" [ngStyle]="{'color': filterHandler.indexOf(filter) !== -1 ? 'red' : ''}">
       <span>{{ filter.label }}</span>

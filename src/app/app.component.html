@@ -3,9 +3,9 @@
 </header>
 
 <main class="container-fluid p-0">
-  <section class="row w-100">
-    <app-filters [Faults]="FaultsAux" class="col-12 col-md-9 justify-content-center justify-content-md-start"></app-filters>
-    <app-search [cards]="Faults" class="col-12 col-md-3 d-inline-flex justify-content-center justify-content-md-end"></app-search>
+  <section class="row w-100 m-0">
+    <app-filters [Faults]="FaultsAux" class="col-12 w-100 col-md-9 justify-content-center justify-content-md-start"></app-filters>
+    <app-search [cards]="Faults" class="col-12 w-100 col-md-3 d-inline-flex justify-content-center justify-content-md-end"></app-search>
   </section>
 
   <section class="row w-100">
@@ -17,5 +17,7 @@
   </section>
 
   <!-- Leyenda?? -->
-  <section class="d-none"> </section>
+  <section class="w-100">
+    <app-legend> </app-legend>
+  </section>
 </main>

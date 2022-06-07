@@ -1,0 +1,14 @@
+.box {
+  display: inline-block;
+  width: 18px !important;
+  height: 18px !important;
+  border:1px solid black
+}
+
+.room  {
+  background-color: red;
+}
+
+.space {
+  background-color: orange;
+}

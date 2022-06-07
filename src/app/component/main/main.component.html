@@ -1,5 +1,5 @@
 <div class="row mx-2 my-1" *ngIf="Faults.spaces.length > 0 else noCards">
-  <div class="col-12 col-md-6 col-lg-3 col-xl-2 col-xxl-1 p-0" *ngFor="let fault of Faults.spaces">
+  <div class="col-12 col-md-6 col-lg-3 col-xl-2 col-xxl-1 p-0" *ngFor="let fault of Faults.spaces" (dblclick)="openModal(fault)">
     <div class="row custom-card m-2">
       <div class="col-3 icon-container">
         <mat-icon class="m-auto"> build </mat-icon> <p class="badge badge-pill badge-primary circlebadge m-auto"> {{fault.faults.length}} </p> <br>

@@ -24,5 +24,6 @@
 }
 
 .isroom {
-  color:rgb(234, 18, 18);
+  color:white;
+  background-color: rgb(255, 78, 78);
 }

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Spaces } from 'src/app/interface/space';
+import { Space, Spaces } from 'src/app/interface/space';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +12,7 @@ export class MainComponent implements OnInit {
 
   @Input() Faults!:Spaces;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -18,5 +20,15 @@ export class MainComponent implements OnInit {
 
   isNumber(val:string) {
 
+  }
+
+  openModal(fault:Space) {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '85vw',
+      data: fault
+    });
+    dialogRef.afterClosed().subscribe(resp => {
+      console.log(resp);
+    })
   }
 }
