@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^5.1.1",
     "@angular/animations": "~11.0.4",
     "@angular/cdk": "^11.2.13",
     "@angular/common": "~11.0.4",
@@ -27,6 +28,8 @@
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "moment": "^2.29.3",
+    "ngx-mat-datetime-picker": "^3.0.0",
+    "ngx-mat-moment-adapter": "^1.0.0-beta.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",

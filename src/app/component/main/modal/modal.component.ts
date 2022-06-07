@@ -1,25 +1,17 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { Space } from 'src/app/interface/space';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Space } from 'src/app/interface/space';
-import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import * as _moment from 'moment';
 
-export const MY_DATE_FORMATS = {
-  parse: {dateInput: 'DD/MM/YYYY'},
-  display: {dateInput: 'DD/MM/YYYY', monthYearLabel: 'MMMM YYYY', dateA11yLabel: 'LL', monthYearA11yLabel: 'MMMM YYYY'},
-};
+import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
+import * as _moment from 'moment';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css'],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS},
-  ],
 })
 export class ModalComponent implements OnInit {
 

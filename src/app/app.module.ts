@@ -26,7 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     NavbarComponent,
     ArrowsComponent,
     ModalComponent,
-    LegendComponent
+    LegendComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +57,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

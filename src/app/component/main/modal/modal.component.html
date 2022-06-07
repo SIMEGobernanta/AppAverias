@@ -19,18 +19,20 @@
         <div class="col-12 col-lg-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Fecha y hora de la incidencia</mat-label>
-            <input matInput [matDatepicker]="picker" readonly>
+            <input name="picker" matInput [ngxMatDatetimePicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <ngx-mat-datetime-picker #picker>
+            </ngx-mat-datetime-picker>
           </mat-form-field>
         </div>
         <!-- Fecha y hora prevista de finalización -->
         <div class="col-12 col-lg-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Fecha y hora prevista de finalización </mat-label>
-            <input matInput [matDatepicker]="pickerend" readonly>
+            <input name="pickerend" matInput [ngxMatDatetimePicker]="pickerend">
             <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
-            <mat-datepicker #pickerend></mat-datepicker>
+            <ngx-mat-datetime-picker #pickerend>
+            </ngx-mat-datetime-picker>
           </mat-form-field>
         </div>
 
