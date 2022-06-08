@@ -14,13 +14,13 @@
         <p class="h4" *ngIf="Fault.idItemSubType === 'ROOM'"> Habitación: {{ Fault.name }}</p>
       </div>
 
-      <form novalidate autocomplete="off" class="needs-validation row container-fluid p-0 px-5 mt-5"  [formGroup]="myForm">
+      <form novalidate (ngSubmit)="validateForm()" autocomplete="off" class="needs-validation row container-fluid p-0 px-5 mt-5" [formGroup]="myForm">
         <!-- Fecha y hora de incidencia -->
         <div class="col-12 col-lg-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Fecha y hora de la incidencia</mat-label>
-            <input name="picker" matInput [ngxMatDatetimePicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <input (dateChange)="setminEndate($event.value)" [formControl]="startDate" name="startDate" matInput [ngxMatDatetimePicker]="picker" [min]="minStartDate" [max]="maxStartDate">
+            <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
             <ngx-mat-datetime-picker #picker>
             </ngx-mat-datetime-picker>
           </mat-form-field>
@@ -29,10 +29,9 @@
         <div class="col-12 col-lg-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Fecha y hora prevista de finalización </mat-label>
-            <input name="pickerend" matInput [ngxMatDatetimePicker]="pickerend">
-            <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #pickerend>
-            </ngx-mat-datetime-picker>
+            <input (dateChange)="setmaxStartdate($event.value)" [formControl]="endDate" name="endDate" matInput [ngxMatDatetimePicker]="pickerend" [min]="minEndDate">
+            <mat-datepicker-toggle matSuffix [for]="$any(pickerend)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #pickerend> </ngx-mat-datetime-picker>
           </mat-form-field>
         </div>
 
@@ -40,7 +39,7 @@
         <div class="col-12 col-md-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label class="col-3 align-self-center"> Tipo de Avería </mat-label>
-            <mat-select>
+            <mat-select [formControl]="faultType" name="faultType">
               <mat-option *ngFor="let fault of Fault.faults" [value]="fault.idFault"> {{fault.idFault}} </mat-option>
             </mat-select>
           </mat-form-field>
@@ -50,7 +49,7 @@
         <div class="col-12 col-md-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label class="col-3 align-self-center"> Avería </mat-label>
-            <mat-select>
+            <mat-select [formControl]="faultName" name="faultName">
               <mat-option *ngFor="let fault of Fault.faults" [value]="fault.name"> {{fault.name}} </mat-option>
             </mat-select>
           </mat-form-field>
@@ -60,7 +59,7 @@
         <div class="col-12 col-md-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label class="col-3 align-self-center"> Máquina </mat-label>
-            <mat-select>
+            <mat-select [formControl]="machine" name="machine">
               <mat-option value="Máquina 1"> Máquina 1 </mat-option>
               <mat-option value="Máquina 2"> Máquina 2 </mat-option>
               <mat-option value="Máquina 3"> Máquina 3 </mat-option>
@@ -72,7 +71,7 @@
         <div class="col-12 col-md-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label class="col-3 align-self-center"> Artículo </mat-label>
-            <mat-select>
+            <mat-select [formControl]="article" name="article">
               <mat-option value="Artículo 1"> Artículo 1 </mat-option>
               <mat-option value="Artículo 2"> Artículo 2 </mat-option>
               <mat-option value="Artículo 3"> Artículo 3 </mat-option>
@@ -84,7 +83,7 @@
         <div class="col-12 col-lg-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Nº de reserva </mat-label>
-            <input matInput type="number">
+            <input matInput type="number" [formControl]="bookingNum" name="bookingNum">
           </mat-form-field>
         </div>
 
@@ -92,7 +91,7 @@
         <div class="col-12 col-lg-6">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Orden de la reserva </mat-label>
-            <input matInput type="text">
+            <input matInput type="text" [formControl]="bookingOrder" name="bookingOrder">
           </mat-form-field>
         </div>
 
@@ -100,19 +99,20 @@
         <div class="col-12">
           <mat-form-field appearance="outline" class="example-full-width w-100">
             <mat-label> Descripción </mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput [formControl]="description" name="description"></textarea>
           </mat-form-field>
         </div>
 
         <!-- Reportada por Cliente -->
         <div class="col-12 d-flex">
           <div class="m-auto">
-            <mat-checkbox class="example-margin"> Reportada Por Cliente </mat-checkbox>
+            <mat-checkbox class="example-margin" [formControl]="reportedbyClient" name="reportedbyClient"> Reportada Por Cliente </mat-checkbox>
           </div>
         </div>
 
         <p class="h5 w-100 text-center mt-5">  Más detalles </p>
 
+        <!-- Separador -->
         <div class="col-12 d-flex justify-content-center">
           <div class="w-75" style="background-color: #888; height:2px !important"> </div>
         </div>
@@ -123,7 +123,7 @@
             <div class="col-12 col-md-6 pt-4">
               <mat-form-field appearance="outline" class="example-full-width w-100">
                 <mat-label class="col-3 align-self-center"> Técnico Asignado </mat-label>
-                <mat-select>
+                <mat-select [formControl]="assignedTec" name="assignedTec">
                   <mat-option value="Técnico 1"> Técnico 1 </mat-option>
                   <mat-option value="Técnico 2"> Técnico 2 </mat-option>
                   <mat-option value="Técnico 3"> Técnico 3 </mat-option>
@@ -134,7 +134,7 @@
             <div class="col-12 col-md-6 pt-4">
               <mat-form-field appearance="outline" class="example-full-width w-100">
                 <mat-label class="col-3 align-self-center"> Prioridad </mat-label>
-                <mat-select>
+                <mat-select [formControl]="priority" name="priority">
                   <mat-option value="Alta"> Alta </mat-option>
                   <mat-option value="Media"> Media </mat-option>
                   <mat-option value="Baja"> Baja </mat-option>
@@ -145,7 +145,7 @@
             <div class="col-12 col-md-6">
               <mat-form-field appearance="outline" class="example-full-width w-100">
                 <mat-label class="col-3 align-self-center"> Notificado por </mat-label>
-                <mat-select>
+                <mat-select [formControl]="notifiedBy" name="notifiedBy">
                   <mat-option value="Juan"> Juan </mat-option>
                   <mat-option value="Pepe"> Pepe </mat-option>
                   <mat-option value="Gema"> Gema </mat-option>
@@ -156,7 +156,7 @@
             <div class="col-12 col-md-6">
               <mat-form-field appearance="outline" class="example-full-width w-100">
                 <mat-label class="col-3 align-self-center"> Zona </mat-label>
-                <mat-select>
+                <mat-select [formControl]="Space" name="Space">
                   <mat-option [value]="Fault.name"> {{Fault.name}} </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -166,8 +166,8 @@
 
 
         <div class="col-12 d-flex justify-content-center align-content-center my-2">
-          <button mat-raised-button color="primary"> Crear </button> &nbsp;
-          <button mat-raised-button style="background-color:#ccc"> Cancelar </button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="!myForm.valid"> Crear </button> &nbsp;
+          <button mat-raised-button type="button" style="background-color:#ccc" (click)="myForm.reset()"> Cancelar </button>
         </div>
 
       </form>
