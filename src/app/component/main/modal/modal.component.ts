@@ -84,8 +84,12 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
 
 
-  validateForm():void {
-
+  validateForm(form:FormGroup):void {
+    Object.keys(this.myForm.controls).forEach(control => {
+      const field = this.myForm.get(control);
+      if (field instanceof FormControl) {field.markAsTouched({ onlySelf: true })}
+      else if (field instanceof FormGroup) {this.validateForm(field)};
+    });
   }
 
   setminEndate(ev:moment.Moment):void {
