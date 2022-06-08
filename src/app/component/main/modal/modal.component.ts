@@ -82,8 +82,6 @@ export class ModalComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-
   validateForm(form:FormGroup):void {
     Object.keys(this.myForm.controls).forEach(control => {
       const field = this.myForm.get(control);

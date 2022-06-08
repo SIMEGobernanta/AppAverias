@@ -134,9 +134,9 @@
         <div class="col-12 d-flex">
           <div class="m-auto">
             <mat-checkbox class="example-margin" [formControl]="reportedbyClient" name="reportedbyClient"> Reportada Por Cliente </mat-checkbox>
-            <p class="text-danger" *ngIf="reportedbyClient.invalid && (reportedbyClient.touched || reportedbyClient.dirty)">
+            <div class="text-danger" *ngIf="reportedbyClient.invalid && (reportedbyClient.touched || reportedbyClient.dirty)">
               <sup *ngIf="reportedbyClient.errors?.required"> Este campo es obligatorio </sup>
-            </p>
+            </div>
           </div>
         </div>
 
